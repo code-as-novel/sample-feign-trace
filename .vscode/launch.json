@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MainApplication<main>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.trace.main.MainApplication",
+            "projectName": "main",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TargetApplication<target>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.trace.target.TargetApplication",
+            "projectName": "target",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

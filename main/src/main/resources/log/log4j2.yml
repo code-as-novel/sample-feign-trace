@@ -1,0 +1,33 @@
+configuration:
+  name: feign-tracing-logger
+  status: info
+
+  properties:
+    property:
+    - name: log-path
+      value: logs
+    - name: layout-pattern
+      value: "%d{yyyy-MM-dd HH:mm:ss.SSS} $highlight{%-5level} [%15.15t] %-50class{1.} : %m%n"
+
+  appenders:
+    Console:
+    - name: Console-Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: ${layout-pattern}
+    - name: Console-Json-Appender
+      target: SYSTEM_OUT
+      JsonTemplateLayout:
+        EventTemplateUrl: classpath: log/layout/layout.json
+
+  loggers:
+    root:
+      level: info
+      appender-ref:
+      -ref: Console-Appender
+    logger:
+    - name: com.trace
+      additivity: false
+      level: info
+      appender-ref:
+      - ref: Console-Appender

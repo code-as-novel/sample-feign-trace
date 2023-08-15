@@ -1,0 +1,41 @@
+spring:
+    application: 
+        name: feign-tracing-target
+    profiles:
+        active: default
+        group:
+            "default": "common, default"
+---
+
+spring:
+    config:
+        activate:
+            on-profile: common
+
+feign:
+    httpclient:
+        disableSslValidation: true
+    client:
+        config:
+            default:
+                connect-timeout: 5000
+                read-timeout: 5000
+                loggerLevel: FULL
+
+---
+spring:
+    config:
+        activate:
+            on-profile: default
+
+server:
+    port: 7071
+    servlet:
+        context-path: /target
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+
+# logging:
+#     config: classpath:log/log4j2.yml
