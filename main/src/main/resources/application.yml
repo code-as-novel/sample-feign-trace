@@ -21,6 +21,17 @@ feign:
                 connect-timeout: 5000
                 read-timeout: 5000
                 loggerLevel: FULL
+    circuitbreaker:
+        enabled: true
+
+resilience4j:
+    circuitbreaker:
+        configs:
+            default:
+                slowCallRateThreshold: 80
+                waitDurationInOpenState: 30s
+                recordFailurePredicate: com.trace.main.circuit.ExceptionRecordFailurePredicate
+
 
 ---
 spring:
